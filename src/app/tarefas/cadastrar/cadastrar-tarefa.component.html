@@ -1,0 +1,45 @@
+<h1>Cadastrar tarefa</h1>
+
+<div class="well">
+
+    <!-- formTarefa é a representaçao do formulário -->
+    <form #formTarefa="ngForm">
+
+        <div class="form-group">
+
+            <label for="nome">Tarefa:</label>
+
+            <!-- [(ngModel)] bind duplo. atualiza o tarefa.nome automaticamente -->
+            <!-- #nome="ngModel representa o campo de texto -->
+
+            <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="tarefa.nome" #nome="ngModel"
+                minlength="5" required>
+
+            <!-- Tratamento de erros -->
+            <!-- nome.dirty || nome.touched verifica se campo ja foi modificado -->
+            <div *ngIf="nome.errors && (nome.dirty || nome.touched)" class="alert alert-danger">
+
+                <!-- mostra o erro "Digite a tarefa" em caso de campo nao preenchido -->
+                <div [hidden]="!nome.errors.required">
+                    Digite a tarefa.
+                </div>
+
+                <!-- mostra erro em caso de campo < 5 caracteres -->
+                <div [hidden]="!nome.errors.minlength">
+                    A tarefa deve conter ao menos 5 caracteres.
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group text-center">
+
+            <input type="submit" class="btn btn-success" (click)="cadastrar()" value="Cadastrar"
+                [disabled]="!formTarefa.form.valid">
+
+            <a [routerLink]="['/tarefas']" class="btn btn-default">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar
+            </a>
+
+        </div>
+    </form>
+</div>

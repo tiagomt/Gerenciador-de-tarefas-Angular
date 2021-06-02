@@ -21,7 +21,7 @@ export class TarefaService {
     const tarefas = this.listarTodos();
     tarefa.id = new Date().getTime();
     tarefas.push(tarefa);
-    localStorage['tarefa'] = JSON.stringify(tarefas);
+    localStorage['tarefas'] = JSON.stringify(tarefas);
 
   }
 
