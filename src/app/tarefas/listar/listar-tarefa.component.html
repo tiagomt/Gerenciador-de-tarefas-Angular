@@ -16,7 +16,8 @@
         <tr *ngFor="let tarefa of tarefas">
 
             <!-- class.success adiciona a classe success(bootstrap) ao elemento td, caso a tarefa não esteja concluida -->
-            <td [class.success]="!tarefa.concluida">
+            <!-- [tarefaConcluida]="tarefa.concluida" atribui o valor de tarefa.concluida a diretiva criada -->
+            <td [class.success]="!tarefa.concluida" [tarefaConcluida]="tarefa.concluida">
 
                 {{ tarefa.nome }}
 
