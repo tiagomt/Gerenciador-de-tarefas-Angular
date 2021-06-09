@@ -15,7 +15,8 @@ export class CadastrarTarefaComponent implements OnInit {
   @ViewChild('formTarefa', { static: true }) formTarefa: NgForm;
   tarefa: Tarefa;
 
-  constructor(private tarefaService: TarefaService, private router: Router) { }
+  constructor(
+    private tarefaService: TarefaService, private router: Router) { }
 
   ngOnInit(): void {
     this.tarefa = new Tarefa();
